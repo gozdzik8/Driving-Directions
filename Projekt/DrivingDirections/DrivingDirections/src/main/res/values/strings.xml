@@ -25,7 +25,9 @@
     <string name="delete">Delete My Search History</string>
     <string name="share_my_location">Share my location</string>
     <string name="add_new_place">Add new place</string>
-    <string name="add_new_place_label">New place</string>
+    <string name="add_new_place_label">Name of new place</string>
     <string name="my_places_label">My Places</string>
+    <string name="address">Address</string>
+    <string name="del_my_places">Delete my places</string>
 
 </resources>

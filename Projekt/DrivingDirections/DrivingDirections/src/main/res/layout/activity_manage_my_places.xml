@@ -29,7 +29,7 @@
         />
 
     <EditText
-        android:id="@+id/new_place"
+        android:id="@+id/name_new_place"
         android:inputType="textNoSuggestions"
         android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
@@ -37,13 +37,31 @@
         android:layout_below="@+id/add_new_place_label"
         android:layout_gravity="fill_horizontal"
         />
+    <TextView
+        android:id="@+id/address_label"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:text="@string/address"
+        android:layout_below="@+id/name_new_place"
+
+        />
+
+    <EditText
+        android:inputType="textNoSuggestions"
+        android:id="@+id/address_new_place"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:layout_below="@id/address_label"
+        />
 
     <Button
         android:id="@+id/add_new_place"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/new_place"
+        android:layout_below="@id/address_new_place"
         android:text="@string/add_new_place" />
 
     <TextView
@@ -55,6 +73,13 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/add_new_place"
         android:text="@string/my_places_label" />
+    <Button
+        android:id="@+id/del_my_places"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/my_places_label"
+        android:text="@string/del_my_places" />
 
 
     <ListView
@@ -62,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_below="@+id/add_new_place"
-        android:layout_marginTop="40dp" />
+        android:layout_below="@+id/del_my_places"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

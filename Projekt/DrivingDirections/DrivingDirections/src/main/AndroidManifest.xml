@@ -45,14 +45,6 @@
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="com.example.drivingdirections.MyPlacesActivity"
-            android:label="@string/title_activity_my_places"
-            android:parentActivityName="com.example.drivingdirections.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
-        </activity>
-        <activity
             android:name="com.example.drivingdirections.ManageMyPlacesActivity"
             android:label="@string/title_activity_manage_my_places"
             android:parentActivityName="com.example.drivingdirections.MainActivity" >

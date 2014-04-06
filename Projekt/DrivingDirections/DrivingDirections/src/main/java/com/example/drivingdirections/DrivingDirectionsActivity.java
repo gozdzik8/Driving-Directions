@@ -1,8 +1,10 @@
 package com.example.drivingdirections;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +40,7 @@ public class DrivingDirectionsActivity extends Activity implements View.OnClickL
     ListView hListView;
     ArrayAdapter hArrayAdapter;
     ArrayList hArrayList = new ArrayList();
+    int number;
     static final HttpTransport HTTP_TRANSPORT = AndroidHttp.newCompatibleTransport();
     static final JsonFactory JSON_FACTORY = new JacksonFactory();
     @Override
@@ -63,6 +66,34 @@ public class DrivingDirectionsActivity extends Activity implements View.OnClickL
         hListView.setAdapter(hArrayAdapter);
         hListView.setOnItemClickListener(this);
 
+        LoadPreferences();
+
+
+    }
+
+    private void LoadPreferences() {
+        SharedPreferences data = PreferenceManager.getDefaultSharedPreferences(this);
+        String numStr = data.getString("Number", "0");
+        number = Integer.parseInt(numStr);
+        int nr = number;
+        while( nr != 0){
+            String dataSet = data.getString("Destination"+nr, "Not available");
+            hArrayAdapter.add(dataSet);
+
+            nr--;
+        }
+
+        hArrayAdapter.notifyDataSetChanged();
+
+    }
+
+    protected void SavePreferences(String key, String value) {
+        // TODO Auto-generated method stub
+        SharedPreferences data = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = data.edit();
+        editor.putString(key, value);
+        editor.commit();
+
 
     }
 
@@ -82,12 +113,19 @@ public class DrivingDirectionsActivity extends Activity implements View.OnClickL
         // Also add that value to the list shown in the ListView
         switch (v.getId()) {
             case R.id.search:
-                hArrayList.add(0, "From: " + from.getText().toString() + " To: " + to.getText().toString());
-                hArrayAdapter.notifyDataSetChanged();
+                if((!from.getText().toString().matches("")) && (!to.getText().toString().matches("")) ) {
+                    String destination = "From: " + from.getText().toString() + " To: " + to.getText().toString();
+                    hArrayList.add(0, destination);
+                    hArrayAdapter.notifyDataSetChanged();
+                    number++;
+                    SavePreferences("Destination" + number, destination);
+                    SavePreferences("Number", Integer.toString(number));
+                }
                 break;
             case R.id.del_my_search_history:
                 hArrayList.removeAll(hArrayList);
                 hArrayAdapter.notifyDataSetChanged();
+                SavePreferences("Number", "0");
                 break;
 
         }
