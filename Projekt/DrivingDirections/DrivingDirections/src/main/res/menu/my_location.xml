@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.drivingdirections.MyLocationActivity" >
+
+    <item android:id="@+id/menu_share_my_location"
+        android:title="@string/share_my_location"
+        android:showAsAction="ifRoom"
+        android:actionProviderClass= "android.widget.ShareActionProvider" />
+</menu>
